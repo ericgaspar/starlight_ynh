@@ -2,8 +2,8 @@
 
 packaging_format = 2
 
-id = "Starlight"
-name = "starlight"
+id = "starlight"
+name = "Starlight"
 description.en = "Documentation site generator"
 description.fr = "Documentation site generator"
 
