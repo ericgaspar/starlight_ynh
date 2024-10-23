@@ -26,6 +26,10 @@ ynh_script_progression "Adding system configurations related to $app..."
 
 ynh_config_add_nginx
 
+ynh_config_add_systemd
+
+yunohost service add "$app" --description="A short description of the app" --log="/var/log/$app/$app.log"
+
 #=================================================
 # INSTALL DOCSIFY
 #=================================================
@@ -36,6 +40,13 @@ pushd "$install_dir"
 popd
 
 chown -R "$app:www-data" "$install_dir"
+
+#=================================================
+# START SYSTEMD SERVICE
+#=================================================
+ynh_script_progression "Starting $app's systemd service..."
+
+ynh_systemctl --service="$app" --action="start"
 
 #=================================================
 # END OF SCRIPT
